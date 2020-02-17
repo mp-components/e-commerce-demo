@@ -1,0 +1,39 @@
+<view id="topbar" class="topbar">
+  <view class="topbar__title">xx美食xx店</view>
+</view>
+<scroll-view scroll-x="{{true}}">
+  <view id="recommend" class="recommend">
+    <view wx:for="{{5}}" wx:key="*this" class="recommend__item">{{index + 1}}</view>
+  </view>
+</scroll-view>
+<view id="holder" class="holder"></view>
+<view class="menu">
+  <view class="menu__tabs">
+    <view class="tabs">
+      <view
+        wx:for="{{menus}}"
+        wx:key="id"
+        class="tab {{item.id === activeTab ? 'active' : ''}}"
+        data-id="{{item.id}}"
+        bind:tap="handleTabTap"
+      >
+        <view class="tab__text">{{item.title}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="menu__content">
+    <view
+      wx:for="{{menus}}"
+      wx:key="id"
+      wx:for-item="menu"
+      id="sku-group-{{menu.id}}"
+      class="sku-group"
+      data-id="{{menu.id}}"
+    >
+      <view class="sku-title">{{menu.title}}</view>
+      <view class="sku-list">
+        <view wx:for="{{menu.sku}}" wx:key="*this" class="sku">{{menu.title}}-{{index + 1}}</view>
+      </view>
+    </view>
+  </view>
+</view>
